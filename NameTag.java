@@ -1,54 +1,51 @@
 public class NameTag {
-    private String name = null;
-    private String title = null;
-    
-    public NameTag() {}
+    // Name Tag saves a person's name
+    String name = null;
 
-    public NameTag(String name)
+    // Constructor, Default
+    public NameTag() 
     {
-        this.name = name;
+        name = "Unknown";
     }
 
-    public NameTag(String name, String title)
+    // Constructor, full
+    public NameTag(String newName)
     {
-        this.name = name;
-        this.title = title;
+        name = newName;
     }
 
     public NameTag(NameTag nameTag)
     {
-        this.name = nameTag.name;
-        this.title = nameTag.title;
+        // I had ChatGPT verify I was doing this right
+        name = nameTag.name;
     }
 
-    public void SetName(String name)
-    {
-        this.name = name;
-    }
-
-    public void SetTitle(String name)
-    
-    {
-        this.name = name;
-    }
-
+    // Getter
     public String GetName()
     {
-        return this.name;
+        return name;
     }
 
-    public String GetTitle()
+    // Setter
+    public void SetName(String newName)
     {
-        return this.title;
+        name = newName;
     }
 
+    // toString
     public String toString()
     {
-        return this.name + "\n" + this.title;
+        return name;
     }
 
-    public boolean equals(NameTag otherNameTag)
+    // equals
+    public boolean equals(NameTag nameTag)
     {
-        return this.name == otherNameTag.name && this.title == otherNameTag.title;
+        // = is assigning a value
+        // == is comparing two objects
+
+        // I asked ChatGPT how to compare
+        // the values of strings for equals.
+        return name.equals(nameTag.name);
     }
 }

@@ -1,55 +1,48 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
+
+// ChatGPT used as reference
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("What should I call you?");
+        System.out.println("Welcome to CS 112!");
+        System.out.println("What is your name?");
 
-        String name = CaptureInput();
+        String name = GetInput();
+        CheckInput(name);
 
-        VerifyInput(name);
+        NameTag nameTag = new NameTag(name);
+        NameTag otherName = new NameTag("CS112");
+        NameTag thirdName = new NameTag(nameTag);
 
-        System.out.println("What is your title?");
+        System.out.println("Nice to meet you, " + nameTag);
 
-        String title = CaptureInput();
-
-        VerifyInput(title);
-
-        NameTag nameTag = new NameTag(name, title);
-
-        NameTag copyTag = new NameTag(nameTag);
-
-        System.out.println("Nice to meet you! I made a name Tag for you:\n" + copyTag.toString());
-    }
-
-    public static void VerifyInput(String name)
-    {
-        // check to be sure the name is valid!
-        if (name == null)
+        if (nameTag.equals(thirdName))
         {
-            name = "No Name Entered.";
+            System.out.println("The name has been duplicated!");
+        }
+        else
+        {
+            System.out.println("Those aren't the same names.");
         }
     }
 
-    public static String CaptureInput()
+    // Read user input from the terminal
+    public static String GetInput() {
+        // I asked ChatGPT how to grab user input
+        // from the terminal
+        Scanner scanner = new Scanner(System.in);
+
+        String inputString = scanner.nextLine();
+
+        return inputString;
+    }
+
+    // Verify we have actual input
+    public static void CheckInput(String inputString)
     {
-        String name = null;
-
-                // enter data using BufferReader
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
-        // Reading data using readLine
-       try
-       {
-         name = reader.readLine();
-       }
-       catch (IOException e)
-       {
-        System.out.println(e);
-       }
-        
-
-        return name;
+        if (inputString == null)
+        {
+            inputString = "Invalid";
+        }
     }
 }
